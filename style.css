@@ -1,0 +1,109 @@
+body {
+    font-family: "Arial", sans-serif;
+    background: url("https://i.fbcd.co/products/original/987e824763ecdf8a10a320da96d77ee152e54bb306ebf7df97c8fa1054c64490.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    text-align: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+header {
+    background: rgba(50, 50, 50, 0.9);
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.game-area {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.player-hand, .dealer-hand {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 45%;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.card {
+    width: 70px;
+    height: 100px;
+    background: white;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.red {
+    color: red;
+}
+
+.betting {
+    margin-top: 20px;
+}
+
+input {
+    padding: 10px;
+    font-size: 1.2em;
+    width: 80px;
+    text-align: center;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+button {
+    padding: 12px 25px;
+    margin: 10px;
+    background: #ffcc00;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #ff9900;
+}
+
+button:disabled {
+    background: #666;
+    cursor: not-allowed;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
