@@ -4,13 +4,15 @@ body {
     background-size: cover;
     color: white;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
     width: 90%;
     max-width: 900px;
     margin: auto;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.85); /* Dark overlay to improve readability */
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
@@ -107,3 +109,4 @@ button:disabled {
     font-size: 1.5em;
     font-weight: bold;
 }
+
