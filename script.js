@@ -7,43 +7,42 @@ let betAmount = 0;
 let deck = [];
 let gameActive = false;
 
-// Add event listeners for both "click" and "touchstart" to ensure mobile compatibility
+// Ensure buttons work on iPhone
 document.addEventListener("DOMContentLoaded", () => {
     const startButton = document.getElementById("start-game");
     startButton.addEventListener("click", showGameScreen);
-    startButton.addEventListener("touchstart", showGameScreen);  // Fix for iPhone
+    startButton.addEventListener("touchstart", showGameScreen);
 
     document.querySelectorAll(".chip").forEach(chip => {
         chip.addEventListener("click", placeBet);
-        chip.addEventListener("touchstart", placeBet);  // Fix for iPhone
+        chip.addEventListener("touchstart", placeBet);
     });
 
     document.getElementById("deal-button").addEventListener("click", startGame);
-    document.getElementById("deal-button").addEventListener("touchstart", startGame);  // Fix for iPhone
+    document.getElementById("deal-button").addEventListener("touchstart", startGame);
 
     document.getElementById("hit-button").addEventListener("click", playerHit);
-    document.getElementById("hit-button").addEventListener("touchstart", playerHit);  // Fix for iPhone
+    document.getElementById("hit-button").addEventListener("touchstart", playerHit);
 
     document.getElementById("stand-button").addEventListener("click", dealerPlay);
-    document.getElementById("stand-button").addEventListener("touchstart", dealerPlay);  // Fix for iPhone
+    document.getElementById("stand-button").addEventListener("touchstart", dealerPlay);
 
     document.getElementById("restart-button").addEventListener("click", restartGame);
-    document.getElementById("restart-button").addEventListener("touchstart", restartGame);  // Fix for iPhone
+    document.getElementById("restart-button").addEventListener("touchstart", restartGame);
 
     updateBetUI();
 });
 
-// Show the game screen and hide the home screen
+// Show the game screen
 function showGameScreen(event) {
-    event.preventDefault();  // Prevent double execution on touch devices
+    event.preventDefault();
     document.getElementById("home-screen").classList.add("hidden");
     document.getElementById("game-screen").classList.remove("hidden");
 }
 
-// Handle chip betting
+// Handle betting
 function placeBet(event) {
-    event.preventDefault();  // Prevent double execution on iPhone
-
+    event.preventDefault();
     if (gameActive) return;
 
     let value = parseInt(this.getAttribute("data-value"));
@@ -79,7 +78,7 @@ function startGame(event) {
     document.getElementById("stand-button").disabled = false;
 }
 
-// Create and shuffle deck functions remain unchanged
+// Create and shuffle deck
 function createDeck() {
     let newDeck = [];
     for (let suit of suits) {
@@ -105,8 +104,8 @@ function drawCard() {
 // Player hits
 function playerHit(event) {
     event.preventDefault();
-
     if (!gameActive) return;
+
     playerHand.push(drawCard());
     updateGameUI(false);
 
@@ -119,7 +118,6 @@ function playerHit(event) {
 // Dealer plays
 function dealerPlay(event) {
     event.preventDefault();
-
     if (!gameActive) return;
 
     document.getElementById("hit-button").disabled = true;
@@ -150,7 +148,7 @@ function determineWinner() {
     }
 }
 
-// End the game and disable buttons
+// End the game
 function endGame(message) {
     document.getElementById("message").textContent = message;
     document.getElementById("balance").textContent = balance;
@@ -166,7 +164,6 @@ function endGame(message) {
 // Restart the game
 function restartGame(event) {
     event.preventDefault();
-
     balance = 1000;
     betAmount = 0;
     document.getElementById("balance").textContent = balance;
@@ -181,6 +178,30 @@ function resetHands() {
     dealerHand = [];
     document.getElementById("player-cards").innerHTML = "";
     document.getElementById("dealer-cards").innerHTML = "";
+}
+
+// Calculate hand score
+function calculateScore(hand) {
+    let score = 0;
+    let aceCount = 0;
+
+    hand.forEach(card => {
+        if (card.value === "A") {
+            aceCount++;
+            score += 11;
+        } else if (["J", "Q", "K"].includes(card.value)) {
+            score += 10;
+        } else {
+            score += parseInt(card.value);
+        }
+    });
+
+    while (score > 21 && aceCount > 0) {
+        score -= 10;
+        aceCount--;
+    }
+
+    return score;
 }
 
 // Update game UI
@@ -213,5 +234,6 @@ function updateBetUI() {
     document.getElementById("bet-amount").textContent = betAmount;
     document.getElementById("balance").textContent = balance;
 }
+
 
 
