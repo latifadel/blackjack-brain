@@ -16,6 +16,7 @@ document.querySelectorAll(".chip").forEach(chip => {
             betAmount += value;
             balance -= value;
             updateBetUI();
+            document.getElementById("deal-button").disabled = false;
         }
     });
 });
@@ -67,43 +68,9 @@ function drawCard() {
     return deck.pop();
 }
 
-function playerHit() {
-    playerHand.push(drawCard());
-    updateGameUI();
-
-    if (calculateScore(playerHand) > 21) {
-        endGame("Bust! You lose.");
-    }
+function updateBetUI() {
+    document.getElementById("bet-amount").textContent = betAmount;
+    document.getElementById("balance").textContent = balance;
 }
 
-function dealerPlay() {
-    while (calculateScore(dealerHand) < 17) {
-        dealerHand.push(drawCard());
-    }
-    updateGameUI();
-    determineWinner();
-}
-
-function determineWinner() {
-    let playerScore = calculateScore(playerHand);
-    let dealerScore = calculateScore(dealerHand);
-
-    if (dealerScore > 21 || playerScore > dealerScore) {
-        endGame("You win!");
-    } else {
-        endGame("Dealer wins!");
-    }
-}
-
-function endGame(message) {
-    document.getElementById("message").textContent = message;
-    document.getElementById("hit-button").disabled = true;
-    document.getElementById("stand-button").disabled = true;
-}
-
-function restartGame() {
-    balance = 1000;
-    betAmount = 0;
-    updateBetUI();
-}
 
