@@ -6,20 +6,17 @@
     <title>BlackJack vs. Latif</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
-    <script>
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("service-worker.js")
-                .then(() => console.log("Service Worker Registered"))
-                .catch(error => console.log("Service Worker Failed:", error));
-        }
-    </script>
+    <script src="home.js" defer></script>  <!-- Home screen JS -->
+    <script src="game.js" defer></script>  <!-- Game logic JS -->
 </head>
 <body>
+    <!-- HOME SCREEN -->
     <div id="home-screen" class="home-container">
         <h1 class="glow">BlackJack vs. Latif 🎰</h1>
         <button id="start-game">Start Game</button>
     </div>
 
+    <!-- GAME TABLE (Hidden Initially) -->
     <div id="game-screen" class="hidden">
         <header>
             <h1 class="glow">BlackJack vs. Latif</h1>
@@ -59,9 +56,5 @@
 
         <p id="message"></p>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
-
-
