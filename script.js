@@ -5,44 +5,52 @@ let dealerHand = [];
 let deck = [];
 let gameActive = false;
 
-// Start the game by showing the table and hiding the home screen
-document.getElementById("start-game").addEventListener("click", () => {
-    document.getElementById("home-screen").classList.add("hidden");
-    document.getElementById("game-screen").classList.remove("hidden");
+// Initialize game and event listeners
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("start-game").addEventListener("click", showGameScreen);
+    document.querySelectorAll(".chip").forEach(chip => chip.addEventListener("click", placeBet));
+    document.getElementById("deal-button").addEventListener("click", startGame);
+    document.getElementById("hit-button").addEventListener("click", playerHit);
+    document.getElementById("stand-button").addEventListener("click", dealerPlay);
+    document.getElementById("restart-button").addEventListener("click", restartGame);
     updateBetUI();
 });
 
+// Show game table and hide home screen
+function showGameScreen() {
+    document.getElementById("home-screen").classList.add("hidden");
+    document.getElementById("game-screen").classList.remove("hidden");
+}
+
 // Handle chip betting
-document.querySelectorAll(".chip").forEach(chip => {
-    chip.addEventListener("click", function () {
-        if (gameActive) return; // Prevent betting after the game starts
-        let value = parseInt(this.getAttribute("data-value"));
-        if (balance >= value) {
-            betAmount += value;
-            balance -= value;
-            updateBetUI();
-            document.getElementById("deal-button").disabled = false;
-        }
-    });
-});
+function placeBet() {
+    if (gameActive) return; // Prevent betting after game starts
 
-// Main game buttons
-document.getElementById("deal-button").addEventListener("click", startGame);
-document.getElementById("hit-button").addEventListener("click", playerHit);
-document.getElementById("stand-button").addEventListener("click", dealerPlay);
-document.getElementById("restart-button").addEventListener("click", restartGame);
+    let value = parseInt(this.getAttribute("data-value"));
+    if (balance >= value) {
+        betAmount += value;
+        balance -= value;
+        updateBetUI();
+        document.getElementById("deal-button").disabled = false;
+    }
+}
 
-// Start a new round
+// Start the game by dealing cards
 function startGame() {
     if (betAmount <= 0) {
-        alert("You must place a bet first!");
+        alert("You must place a bet before dealing!");
         return;
     }
 
+    resetHands();
+
     deck = createDeck();
     shuffleDeck(deck);
-    playerHand = [drawCard(), drawCard()];
-    dealerHand = [drawCard(), drawCard()];
+
+    playerHand.push(drawCard());
+    playerHand.push(drawCard());
+    dealerHand.push(drawCard());
+    dealerHand.push(drawCard());
 
     gameActive = true;
     updateGameUI();
@@ -52,7 +60,7 @@ function startGame() {
     document.getElementById("stand-button").disabled = false;
 }
 
-// Create a full deck of cards
+// Create a standard deck of 52 cards
 function createDeck() {
     let suits = ["♠", "♥", "♦", "♣"];
     let values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
@@ -65,7 +73,7 @@ function createDeck() {
     return newDeck;
 }
 
-// Shuffle the deck
+// Shuffle the deck randomly
 function shuffleDeck(deck) {
     for (let i = deck.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
@@ -78,7 +86,7 @@ function drawCard() {
     return deck.pop();
 }
 
-// Player chooses to hit (draw a card)
+// Handle player hitting (drawing a card)
 function playerHit() {
     if (!gameActive) return;
     playerHand.push(drawCard());
@@ -89,7 +97,7 @@ function playerHit() {
     }
 }
 
-// Dealer automatically plays after the player stands
+// Dealer's turn after player stands
 function dealerPlay() {
     if (!gameActive) return;
 
@@ -104,7 +112,7 @@ function dealerPlay() {
     determineWinner();
 }
 
-// Determine who won the round
+// Determine the winner
 function determineWinner() {
     let playerScore = calculateScore(playerHand);
     let dealerScore = calculateScore(dealerHand);
@@ -113,7 +121,7 @@ function determineWinner() {
         balance += betAmount * 2;
         endGame("You win!");
     } else if (playerScore === dealerScore) {
-        balance += betAmount; // Return the bet
+        balance += betAmount; // Return bet
         endGame("It's a tie!");
     } else {
         endGame("Dealer wins.");
@@ -131,12 +139,11 @@ function endGame(message) {
     updateBetUI();
 }
 
-// Restart the entire game (reset balance)
+// Restart the entire game
 function restartGame() {
     balance = 1000;
     betAmount = 0;
-    playerHand = [];
-    dealerHand = [];
+    resetHands();
     gameActive = false;
 
     document.getElementById("deal-button").disabled = true;
@@ -170,6 +177,14 @@ function calculateScore(hand) {
     }
 
     return score;
+}
+
+// Reset hands
+function resetHands() {
+    playerHand = [];
+    dealerHand = [];
+    document.getElementById("player-cards").innerHTML = "";
+    document.getElementById("dealer-cards").innerHTML = "";
 }
 
 // Update game UI
