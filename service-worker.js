@@ -6,6 +6,7 @@ self.addEventListener("install", (event) => {
                 "styles.css",
                 "script.js",
                 "manifest.json",
+                "background.jpg", // Cache the background image
                 "icon-192.png",
                 "icon-512.png"
             ]);
@@ -15,8 +16,3 @@ self.addEventListener("install", (event) => {
 
 self.addEventListener("fetch", (event) => {
     event.respondWith(
-        caches.match(event.request).then((response) => {
-            return response || fetch(event.request);
-        })
-    );
-});
