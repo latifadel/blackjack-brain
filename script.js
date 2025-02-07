@@ -62,3 +62,4 @@ function updateBetUI() {
     document.getElementById("balance").textContent = balance;
 }
 
+
