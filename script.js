@@ -72,5 +72,3 @@ function updateBetUI() {
     document.getElementById("bet-amount").textContent = betAmount;
     document.getElementById("balance").textContent = balance;
 }
-
-
