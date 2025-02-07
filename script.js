@@ -29,7 +29,6 @@ function startGame() {
 
     deck = createDeck();
     shuffleDeck(deck);
-
     document.getElementById("deal-button").disabled = true;
 }
 
