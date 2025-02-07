@@ -21,13 +21,13 @@
             <p>Balance: $<span id="balance">1000</span></p>
         </header>
 
-        <!-- Betting Area with Chips -->
+        <!-- Betting Area -->
         <div class="betting">
             <h2>Place Your Bet</h2>
             <div class="chips-container">
-                <img src="chip-10.png" class="chip" data-value="10">
-                <img src="chip-50.png" class="chip" data-value="50">
-                <img src="chip-100.png" class="chip" data-value="100">
+                <div class="chip" data-value="10">$10</div>
+                <div class="chip" data-value="50">$50</div>
+                <div class="chip" data-value="100">$100</div>
             </div>
             <p>Bet: $<span id="bet-amount">0</span></p>
         </div>
@@ -52,8 +52,6 @@
             <button id="deal-button" disabled>Deal</button>
             <button id="hit-button" disabled>Hit</button>
             <button id="stand-button" disabled>Stand</button>
-            <button id="split-button" disabled>Split</button>
-            <button id="double-button" disabled>Double Down</button>
             <button id="restart-button">Restart</button>
         </div>
 
