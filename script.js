@@ -5,7 +5,7 @@ let dealerHand = [];
 let deck = [];
 let gameActive = false;
 
-// Initialize game and event listeners
+// Initialize the game on page load
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("start-game").addEventListener("click", showGameScreen);
     document.querySelectorAll(".chip").forEach(chip => chip.addEventListener("click", placeBet));
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateBetUI();
 });
 
-// Show game table and hide home screen
+// Show the game screen and hide the home screen
 function showGameScreen() {
     document.getElementById("home-screen").classList.add("hidden");
     document.getElementById("game-screen").classList.remove("hidden");
@@ -35,7 +35,7 @@ function placeBet() {
     }
 }
 
-// Start the game by dealing cards
+// Start the game
 function startGame() {
     if (betAmount <= 0) {
         alert("You must place a bet before dealing!");
@@ -43,7 +43,6 @@ function startGame() {
     }
 
     resetHands();
-
     deck = createDeck();
     shuffleDeck(deck);
 
@@ -86,7 +85,7 @@ function drawCard() {
     return deck.pop();
 }
 
-// Handle player hitting (drawing a card)
+// Player chooses to hit (draw a card)
 function playerHit() {
     if (!gameActive) return;
     playerHand.push(drawCard());
@@ -97,7 +96,7 @@ function playerHit() {
     }
 }
 
-// Dealer's turn after player stands
+// Dealer automatically plays after the player stands
 function dealerPlay() {
     if (!gameActive) return;
 
@@ -112,7 +111,7 @@ function dealerPlay() {
     determineWinner();
 }
 
-// Determine the winner
+// Determine who won the round
 function determineWinner() {
     let playerScore = calculateScore(playerHand);
     let dealerScore = calculateScore(dealerHand);
@@ -121,7 +120,7 @@ function determineWinner() {
         balance += betAmount * 2;
         endGame("You win!");
     } else if (playerScore === dealerScore) {
-        balance += betAmount; // Return bet
+        balance += betAmount; // Return the bet
         endGame("It's a tie!");
     } else {
         endGame("Dealer wins.");
@@ -201,4 +200,5 @@ function updateBetUI() {
     document.getElementById("bet-amount").textContent = betAmount;
     document.getElementById("balance").textContent = balance;
 }
+
 
