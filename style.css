@@ -1,183 +1,91 @@
-/* Import a cool casino-style font */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-/* --- GENERAL STYLING --- */
+
 body {
-    font-family: "Arial", sans-serif;
-    background: url("casino-background.jpg") no-repeat center center fixed;
     font-family: 'Press Start 2P', cursive;
-    background: url("https://i.fbcd.co/products/original/987e824763ecdf8a10a320da96d77ee152e54bb306ebf7df97c8fa1054c64490.jpg") no-repeat center center fixed;
-    background-size: cover;
+    background: radial-gradient(circle, #006400, #003300);
     color: white;
     text-align: center;
     margin: 0;
     padding: 0;
 }
 
-/* --- CASINO CONTAINER --- */
-.container {
-    width: 90%;
-    max-width: 900px;
-    max-width: 450px;
-    margin: auto;
-    background: rgba(0, 0, 0, 0.85); /* Dark overlay to improve readability */
+/* HOME SCREEN */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     background: rgba(0, 0, 0, 0.8);
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1.5em;
+    background: gold;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: darkgoldenrod;
+}
+
+/* TABLE DESIGN */
+.table {
+    width: 80%;
+    margin: auto;
+    background: #004400;
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    border: 2px solid #ffcc00; /* Casino gold border */
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.3);
 }
 
-/* --- HEADER STYLING --- */
-header {
-    background: rgba(50, 50, 50, 0.9);
-    background: linear-gradient(45deg, #ffcc00, #ff9900);
-    padding: 15px;
-    border-radius: 10px 10px 0 0;
-    font-size: 1.6em;
-    font-size: 1.2em;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: black;
-    font-weight: bold;
-}
-
-/* --- GAME AREA --- */
-.game-area {
+/* CHIPS */
+.chips-container {
     display: flex;
-    justify-content: space-around;
-    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.chip {
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, #ffcc00, #ff9900);
+    border-radius: 50%;
+    display: flex;
     align-items: center;
-    margin-top: 20px;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
 }
 
-/* --- HANDS (PLAYER & DEALER) --- */
-.player-hand, .dealer-hand {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    padding: 15px;
-    border-radius: 10px;
-    width: 45%;
-    width: 90%;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-/* --- CARD STYLING --- */
+/* CARDS */
 .cards {
     display: flex;
     justify-content: center;
     gap: 10px;
-    flex-wrap: wrap;
-    gap: 8px;
     margin-top: 10px;
 }
 
-/* --- CARD DESIGN --- */
 .card {
-    width: 70px;
-    height: 100px;
+    width: 90px;
+    height: 130px;
     background: white;
-    border-radius: 5px;
-    width: 80px;
-    height: 120px;
-    background: linear-gradient(45deg, #ffffff, #e6e6e6);
     border-radius: 10px;
     text-align: center;
-    font-size: 1.5em;
     font-size: 2em;
     font-weight: bold;
     color: black;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    border: 2px solid #000;
+    border: 2px solid black;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
 }
 
-.red {
-/* --- RED CARDS (HEARTS & DIAMONDS) --- */
-.card.red {
-    color: red;
-}
-
-/* --- BETTING INPUT --- */
-.betting {
-    margin-top: 20px;
-    color: white;
-}
-
-input {
-input[type="number"] {
-    padding: 10px;
-    font-size: 1.2em;
-    width: 80px;
-    width: 100px;
-    text-align: center;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    background: #222;
-    color: white;
-}
-
-.controls {
-    margin-top: 20px;
-}
-/* --- BUTTONS --- */
-button {
-    padding: 12px 25px;
-    padding: 12px 20px;
-    margin: 10px;
-    background: #ffcc00;
-    background: linear-gradient(45deg, #ffcc00, #ff9900);
-    color: black;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    border-radius: 10px;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: 0.2s;
-    transition: 0.3s ease-in-out;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
-    text-transform: uppercase;
-}
-
-button:hover {
-    background: #ff9900;
-    background: linear-gradient(45deg, #ff9900, #ff6600);
-    transform: scale(1.05);
-}
-
-button:disabled {
-    background: #666;
-    cursor: not-allowed;
-}
-
-/* --- MESSAGE STYLING --- */
-#message {
-    margin-top: 20px;
-    font-size: 1.5em;
-    font-size: 1.3em;
-    font-weight: bold;
-    color: #ffcc00;
-}
-
-/* --- GLOWING NEON TEXT EFFECT --- */
-.glow {
-    text-shadow: 0 0 5px #fff, 0 0 10px #ff9900, 0 0 20px #ff9900;
-}
-/* --- RESPONSIVE DESIGN FOR MOBILE --- */
-@media (max-width: 600px) {
-    .container {
-        width: 95%;
-    }
-    .card {
-        width: 70px;
-        height: 100px;
-        font-size: 1.5em;
-    }
+.hidden {
+    display: none;
 }
