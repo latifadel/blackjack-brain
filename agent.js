@@ -2,7 +2,7 @@
 
 export const ACTIONS = ["hit","stand","double"];
 const RANKS = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
-const VALUES = Object.fromEntries(RANKS.map(r=>[r,r==="A"?11:["T","J","Q","K"].includes(r)?10:+r]));
+const VALUES = Object.fromEntries(RANKS.map(r=>[r,r==="A"?11:["10","J","Q","K"].includes(r)?10:+r]));
 
 class Shoe{
   constructor(decks=6){this.decks=decks;this.reset();}
