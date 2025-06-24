@@ -45,7 +45,8 @@ header {
 }
 
 /* --- HANDS (PLAYER & DEALER) --- */
-.player-hand, .dealer-hand {
+.player-hand,
+.dealer-hand {
     background: rgba(255, 255, 255, 0.1);
     padding: 15px;
     border-radius: 10px;
@@ -128,6 +129,11 @@ button:hover {
 button:disabled {
     background: #666;
     cursor: not-allowed;
+}
+
+/* --- Highlight the Double button --- */
+#double-btn {
+    border: 2px solid #ffcc00;
 }
 
 /* --- MESSAGE STYLING --- */
