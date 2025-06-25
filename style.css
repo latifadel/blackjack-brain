@@ -1,59 +1,59 @@
-/* Retro pixel font */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-/* -------- GLOBAL -------- */
+/* ---------- GLOBAL ---------- */
 body{
   font-family:'Press Start 2P',cursive;
   background:url("https://i.fbcd.co/products/original/987e824763ecdf8a10a320da96d77ee152e54bb306ebf7df97c8fa1054c64490.jpg") center/cover fixed;
-  color:#fff; text-align:center; margin:0;
+  color:#fff;text-align:center;margin:0;
 }
-
-/* Casino “tray” */
 .container{
-  width:90%; max-width:450px; margin:auto;
-  background:rgba(0,0,0,0.85); padding:20px; border-radius:15px;
-  border:2px solid #ffcc00; box-shadow:0 0 20px rgba(255,255,255,.25);
+  width:90%;max-width:450px;margin:auto;
+  background:rgba(0,0,0,.85);padding:20px;border-radius:15px;
+  border:2px solid #ffcc00;box-shadow:0 0 20px rgba(255,255,255,.25);
 }
-
-/* Header banner */
 header{
   background:linear-gradient(45deg,#ffcc00,#ff9900);
-  padding:15px; border-radius:10px 10px 0 0;
-  color:#000; font-weight:bold; letter-spacing:2px;
+  padding:15px;border-radius:10px 10px 0 0;
+  color:#000;font-weight:bold;letter-spacing:2px;
 }
 .glow{ text-shadow:0 0 5px #fff,0 0 10px #ff9900,0 0 20px #ff9900; }
 
-/* Dealer / player blocks */
-.game-area{display:flex; flex-direction:column; align-items:center; margin-top:20px;}
+/* ---------- HANDS ---------- */
+.game-area{display:flex;flex-direction:column;align-items:center;margin-top:20px}
 .player-hand,.dealer-hand{
-  background:rgba(255,255,255,.08); padding:15px; border-radius:10px; width:90%;
-  box-shadow:0 4px 10px rgba(255,255,255,.2); margin-bottom:15px;
+  background:rgba(255,255,255,.08);padding:15px;border-radius:10px;width:90%;
+  box-shadow:0 4px 10px rgba(255,255,255,.2);margin-bottom:15px;
 }
-
-/* Card grid */
-.cards{display:flex; justify-content:center; flex-wrap:wrap; gap:8px; margin-top:10px;}
+.cards{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:10px}
 .card{
-  width:80px; height:120px; border-radius:10px; border:2px solid #000;
+  width:80px;height:120px;border-radius:10px;border:2px solid #000;
   background:linear-gradient(45deg,#fff,#e6e6e6);
-  display:flex; align-items:center; justify-content:center;
-  font-size:2em; font-weight:bold; color:#000;
+  display:flex;align-items:center;justify-content:center;
+  font-size:2em;font-weight:bold;color:#000;
   box-shadow:0 4px 10px rgba(0,0,0,.5);
 }
 .card.red{color:red}
 
-/* Buttons */
+/* ---------- BUTTONS ---------- */
 .controls button{
-  padding:12px 20px; margin:10px;
-  background:linear-gradient(45deg,#ffcc00,#ff9900); color:#000;
-  border:none; border-radius:10px; font-size:1.2em; font-weight:bold;
-  cursor:pointer; transition:.3s; box-shadow:0 4px 10px rgba(255,255,255,.2);
-  text-transform:uppercase;
+  padding:12px 18px;margin:10px;
+  background:linear-gradient(45deg,#ffcc00,#ff9900);color:#000;
+  border:none;border-radius:10px;font-size:1.1em;font-weight:bold;
+  cursor:pointer;transition:.3s;box-shadow:0 4px 10px rgba(255,255,255,.2);
 }
-.controls button:hover{background:linear-gradient(45deg,#ff9900,#ff6600); transform:scale(1.05);}
-.controls button:disabled{background:#666; cursor:not-allowed;}
+.controls button:hover{background:linear-gradient(45deg,#ff9900,#ff6600);transform:scale(1.05)}
+.controls button:disabled{background:#666;cursor:not-allowed;}
 #double-btn{border:2px solid #ffcc00}
+#hint-btn {border:2px solid #00bfff}  /* blue outline for hint */
 
-/* Mobile tweaks */
+/* ---------- LEARNING PANEL ---------- */
+.learning-panel{
+  margin-top:15px;
+  font-size:.9em;
+  color:#ffcc00;
+}
+
+/* ---------- MOBILE ---------- */
 @media(max-width:600px){
-  .card{width:70px; height:100px; font-size:1.5em;}
+  .card{width:70px;height:100px;font-size:1.5em}
 }
