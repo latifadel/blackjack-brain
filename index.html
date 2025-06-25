@@ -1,34 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blackjack Brain 🎰</title>
 
-  <!-- Retro casino styling -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Retro-casino styling -->
+  <link rel="stylesheet" href="style.css" />
 
-  <!-- PWA (optional) -->
-  <link rel="manifest" href="manifest.json">
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log('Service-Worker registered'));
-    }
-  </script>
-
-  <!-- Main logic -->
+  <!-- UI + RL logic -->
   <script type="module" src="game.js" defer></script>
 </head>
 
 <body>
+  <!-- Casino “tray” -->
   <div class="container">
     <header class="glow">
       <h1>Blackjack Brain</h1>
       <p>Balance $<span id="balance">1000</span></p>
     </header>
 
-    <!-- Dealer / Player areas -->
+    <!-- Dealer / player panels -->
     <div class="game-area">
       <div class="dealer-hand">
         <h2>Latif’s Hand</h2>
@@ -43,10 +35,10 @@
       </div>
     </div>
 
-    <!-- Betting -->
+    <!-- Bet box -->
     <div class="betting">
       <label for="bet-amount">Bet $</label>
-      <input type="number" id="bet-amount" value="100" min="10" step="10">
+      <input type="number" id="bet-amount" value="100" min="10" step="10" />
     </div>
 
     <!-- Controls -->
